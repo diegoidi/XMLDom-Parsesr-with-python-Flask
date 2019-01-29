@@ -1,0 +1,76 @@
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<!Doctype html>
+<html>
+    <head>
+        <title>XML DOM Parsser</title>
+        <link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='css/xmldom.css') }}">
+        <script type='text/javascript' src="{{ url_for('static',filename='js/jquery-2.1.1.js') }}"></script>
+        <script type='text/javascript' src="{{ url_for('static',filename='js/xmlparser.js') }}"></script>
+    </head>
+
+        <body>
+            <form id="fileupload"  name="checklist">
+            <fieldset style="margin-left:auto;margin-right:auto;margin-top:50px;width:50%;">
+            <legend>XML DOM PARSER</legend><br />
+           <table align="center" cellSpacing="2" cellPadding="0" border="0">
+            <tr style="display: block;">
+               <td>
+                <label for="file">Upload XML FILE&nbsp&nbsp</label>
+               </td>
+               <td>
+                  <input type="file" name="file" id="fileid" class="txtStyle" style="height:20px;width:250px;" />
+               </td>
+            </tr>
+             <tr><td><br/></td></tr>
+
+             <tr style="display: block;">
+               <td>
+                 <label>Search a Value?&nbsp&nbsp</lable>
+               </td>
+               <td>
+                    <select id="elemsearch">
+                      <option selected="selected"></option>
+                      <option value="YES">YES</option>
+                      <option value="NO">NO</option>
+                    </select>
+               </td>
+              </tr>
+            <tr><td><br/></td></tr>
+
+              <tr id="YESNO" style="display: none;">
+                 <td>
+
+                 <label for="search">Enter Element Value&nbsp&nbsp&nbsp&nbsp</label>
+
+                 </td><td>
+                   <input type="text" name="element" id="search" /><br />
+                </td>
+              </tr>
+               <tr><td><br/></td></tr>
+                        <tr>
+                          <td>
+                           <input style="margin-left:145px;" type="button" id="button" value="Submit" onclick="ProcessForm()" class="buttonc"/>
+                          </td>
+                       </tr>
+            <tr><td>
+            <div id="formvalidation" style="margin-left:145px;"></div>
+            <div id="pattern" style="margin-left:145px;"></div>
+            </tr></td>
+              <tr><td><br/></td></tr>
+               <tr id="response" style="display: none;">
+                 <td colspan=2 id=logviewtd style="text-align:left;width:100%">
+                <p style="margin-top:10px;" id=logviewhead></p>
+                <pre id="logviewpre" style="font-size: 11px;width:860px; white-space:pre-wrap; white-space:-moz-pre-wrap !important; white-sp
+      ace:-pre-wrap; white-space: -o-pre-wrap;word-wrap: break-word;" ></pre>
+                </td>
+               </tr>
+           </table>
+
+         </form>
+     </body>
+</html>
+{% endblock %}
