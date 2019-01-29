@@ -1,0 +1,59 @@
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<!Doctype html>
+<html>
+    <head>
+        <title>C2C Server</title>
+        <link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='css/stylesheet.css') }}">
+        <script type='text/javascript' src="{{ url_for('static',filename='js/jquery-1.4.4.js') }}"></script>
+        <script type='text/javascript' src="{{ url_for('static',filename='js/script.js') }}"></script>
+
+     </head>
+
+        <body>
+        <form name="checklist">
+        <fieldset style="margin-left:auto;margin-right:auto;margin-top:50px;width:50%;">
+        <legend> C2C Windows Sftp Server Tool </legend><br />
+                <label>ENV&nbsp&nbsp</label>
+                    <select id="Env">
+                        <option></option>
+                        <option value="0">Prod</option>
+                        <option value="1">NonProd</option>
+                    </select><br /><br/>
+                <label>Primary VM&nbsp&nbsp</label>
+                    <select id="privm">
+                        <option value="">-- select one -- </option>
+                    </select><br /><br/>
+                <div id="testing"></div>
+                 <label>Secondary VM&nbsp&nbsp</label>
+                     <select id="secvm">
+                        <option value="">-- select one -- </option>
+                     </select><br /><br />
+                <label>Primary LTM&nbsp&nbsp</label>
+                    <select id="priltm">
+                      <option value="">-- select one -- </option>
+                    </select><br /><br />
+                <label>Secondary LTM&nbsp&nbsp</label>
+                    <select id="secltm">
+                      <option value="">-- select one -- </option>
+                    </select><br /></br />
+                <label>GTM&nbsp&nbsp</label>
+                    <select id="gtm">
+                      <option value="">-- select one --</option>
+                    </select><br /><br />
+
+                <tr><td></td>
+                  <td>
+                  <input style="margin-left:145px;" id="button" type="button" value="Submit" class="button" onclick="ProcessForm()"</input>
+                  </td>
+                </tr>
+                    <div id="formvalidation" style="margin-left:145px;"></div>
+                    <div id="prodenv" style="margin-left:145px;"></div>
+             </form>
+        </body>
+</html>
+
+{% endblock %}
