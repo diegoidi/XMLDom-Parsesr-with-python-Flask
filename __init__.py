@@ -79,11 +79,7 @@ def iterparent(val,cnt):
         for k,v in val.attrib.items():
             k = '@' + k
             finaldict[mainkey][k] = v
-    childlist = []
-    for child in val:
-        childlist.append(child.tag)
-    if len(childlist) > 1 and len(set(childlist)) == 1:
-        print("The childlist values are identicle")
+     
     for child in val:
         childdict = {}
         if len(child):
@@ -92,9 +88,7 @@ def iterparent(val,cnt):
         else:
             finaldict[mainkey][child.tag] = child.text
     jsondata = json.dumps(finaldict)
-    print(jsondata)
-    return(jsondata)
-
+    return(jsondata)         
 
 def getelemval(file,elem):
 
@@ -104,18 +98,31 @@ def getelemval(file,elem):
     elmlist = []
     dictdata = {}
     cnt = 0
+    keyt = "#text"
     for val in root.iter():
         elmlist.append(val.tag)
         if val.attrib:
             dict = val.attrib
             for k in dict.keys():
-                if dict[k].upper() == elem.upper():
-                    if len(val):
+                if not dict[k]:              ## skip the loop if the element value is null	
+                    continue
+						
+                if dict[k].upper() == elem.upper():    ## check if the search value is matching with the attribute value
+                    if len(val):                       ## if the element has sub elements/children call iterparent() function
                         cnt = 1
-                        data = iterparent(val,cnt)
-                        return(data)
+                        jsondata = iterparent(val,cnt)  
+                        return(jsondata)
                     else:
-                        print("not a parent")
+                        childattrib = val.attrib        ##if element has no children then get the element details
+                        dictdata[val.tag] = {}
+                        for k,v in childattrib.items():
+                            k = '@' + k
+                        dictdata[val.tag][k] = v
+                        dictdata[val.tag][keyt] = val.text
+                        jsondata = json.dumps(dictdata)
+                        return(jsondata)
+        if not val.text:    
+            continue
 
         if val.text.upper() == elem.upper():
             cnt = cnt + 1
