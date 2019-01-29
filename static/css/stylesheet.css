@@ -1,0 +1,21 @@
+legend {
+  font-weight:bold;
+}
+
+label {
+  display: inline-block;
+  width  : 140px;
+  text-align: right;
+  align: center;
+}
+
+
+#button {
+  text-align: right;
+  align: center;
+  position: relative;
+}
+
+#formvalidation,#prodenv {
+  color: #AA0000;
+}
